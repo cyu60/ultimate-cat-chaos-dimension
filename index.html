@@ -1,0 +1,221 @@
+<html><head><base href="." />
+<title>🐱 ULTIMATE CAT CHAOS DIMENSION 🐱</title>
+<style>
+  body {
+    margin: 0;
+    overflow: hidden;
+    background: linear-gradient(45deg, #ff00ff, #00ffff);
+    font-family: "Comic Sans MS", cursive;
+    height: 100vh;
+  }
+  
+  .rainbow-text {
+    animation: rainbow 3s linear infinite;
+    font-size: 3em;
+    text-shadow: 3px 3px 0 #000;
+    position: relative;
+    z-index: 100;
+  }
+  
+  @keyframes rainbow {
+    0% { color: red; }
+    33% { color: lime; }
+    66% { color: blue; }
+    100% { color: red; }
+  }
+  
+  .spinning-cats {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    animation: spin 10s linear infinite;
+  }
+  
+  @keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+  
+  .cat-emoji {
+    position: absolute;
+    font-size: 50px;
+    animation: float 3s ease-in-out infinite;
+  }
+  
+  @keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+    100% { transform: translateY(0px); }
+  }
+  
+  .video-container {
+    position: relative;
+    z-index: 1000;
+    transform: rotate(-3deg);
+    box-shadow: 10px 10px 0 rgba(0,0,0,0.5);
+    margin: 20px;
+    border: 10px solid #ff00ff;
+  }
+  
+  #disco-floor {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 200px;
+    display: flex;
+    justify-content: space-around;
+  }
+  
+  .disco-tile {
+    width: 100px;
+    height: 100px;
+    margin: 5px;
+    animation: colorChange 1s linear infinite;
+  }
+  
+  @keyframes colorChange {
+    0% { background: red; }
+    25% { background: yellow; }
+    50% { background: lime; }
+    75% { background: blue; }
+    100% { background: red; }
+  }
+  
+  #nyan-cat {
+    position: fixed;
+    right: -150px;
+    top: 50%;
+    width: 150px;
+    height: 100px;
+    animation: flyAcross 5s linear infinite;
+  }
+  
+  @keyframes flyAcross {
+    from { transform: translateX(0); }
+    to { transform: translateX(-calc(100vw + 300px)); }
+  }
+  
+  .party-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 20px;
+    font-size: 24px;
+    background: yellow;
+    border: 5px solid black;
+    cursor: pointer;
+    z-index: 2000;
+    transform: rotate(5deg);
+  }
+  
+  .party-button:hover {
+    transform: scale(1.1) rotate(-5deg);
+  }
+</style>
+</head>
+<body>
+
+<div class="spinning-cats" id="catContainer"></div>
+
+<center>
+  <h1 class="rainbow-text">🐱 WELCOME TO THE CAT DIMENSION 🐱</h1>
+  <div class="video-container">
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/C43p8h99Cs0" frameborder="0" allowfullscreen></iframe>
+  </div>
+</center>
+
+<div id="disco-floor"></div>
+
+<svg id="nyan-cat" viewBox="0 0 100 100">
+  <path d="M15,50 L85,50" stroke="red" stroke-width="5"/>
+  <path d="M15,60 L85,60" stroke="orange" stroke-width="5"/>
+  <path d="M15,70 L85,70" stroke="yellow" stroke-width="5"/>
+  <path d="M15,80 L85,80" stroke="green" stroke-width="5"/>
+  <path d="M15,90 L85,90" stroke="blue" stroke-width="5"/>
+  <rect x="60" y="30" width="40" height="30" fill="gray"/>
+  <circle cx="90" cy="45" r="5" fill="black"/>
+</svg>
+
+<button class="party-button" onclick="activatePartyMode()">PARTY MODE!!!</button>
+
+<script>
+const catEmojis = ['😺', '😸', '😹', '😻', '😼', '😽', '🙀', '😿', '😾'];
+
+// Create floating cat emojis
+function createCatEmoji() {
+  const cat = document.createElement('div');
+  cat.className = 'cat-emoji';
+  cat.textContent = catEmojis[Math.floor(Math.random() * catEmojis.length)];
+  cat.style.left = Math.random() * window.innerWidth + 'px';
+  cat.style.top = Math.random() * window.innerHeight + 'px';
+  document.getElementById('catContainer').appendChild(cat);
+}
+
+// Create disco floor
+function createDiscoFloor() {
+  const floor = document.getElementById('disco-floor');
+  for (let i = 0; i < 20; i++) {
+    const tile = document.createElement('div');
+    tile.className = 'disco-tile';
+    tile.style.animationDelay = `${i * 0.1}s`;
+    floor.appendChild(tile);
+  }
+}
+
+// Party mode activation
+function activatePartyMode() {
+  const audio = new Audio('https://www.myinstants.com/media/sounds/nyan-cat.mp3');
+  audio.play();
+  
+  // Create more cats
+  for (let i = 0; i < 20; i++) {
+    setTimeout(createCatEmoji, i * 100);
+  }
+  
+  // Make everything shake
+  document.body.style.animation = 'shake 0.1s linear infinite';
+}
+
+// Initialize
+document.addEventListener('DOMContentLoaded', () => {
+  createDiscoFloor();
+  for (let i = 0; i < 10; i++) {
+    createCatEmoji();
+  }
+});
+
+// Add mouse trail
+document.addEventListener('mousemove', (e) => {
+  const trail = document.createElement('div');
+  trail.className = 'cat-emoji';
+  trail.textContent = catEmojis[Math.floor(Math.random() * catEmojis.length)];
+  trail.style.left = e.pageX + 'px';
+  trail.style.top = e.pageY + 'px';
+  document.body.appendChild(trail);
+  
+  setTimeout(() => {
+    trail.remove();
+  }, 1000);
+});
+
+// Add shake animation
+const shake = document.createElement('style');
+shake.textContent = `
+  @keyframes shake {
+    0% { transform: translate(1px, 1px) rotate(0deg); }
+    10% { transform: translate(-1px, -2px) rotate(-1deg); }
+    20% { transform: translate(-3px, 0px) rotate(1deg); }
+    30% { transform: translate(3px, 2px) rotate(0deg); }
+    40% { transform: translate(1px, -1px) rotate(1deg); }
+    50% { transform: translate(-1px, 2px) rotate(-1deg); }
+    60% { transform: translate(-3px, 1px) rotate(0deg); }
+    70% { transform: translate(3px, 1px) rotate(-1deg); }
+    80% { transform: translate(-1px, -1px) rotate(1deg); }
+    90% { transform: translate(1px, 2px) rotate(0deg); }
+    100% { transform: translate(1px, -2px) rotate(-1deg); }
+  }
+`;
+document.head.appendChild(shake);
+</script>
+</body></html>
