@@ -47,30 +47,30 @@
    ```bash
    git clone https://github.com/your-username/ultimate-cat-chaos-dimension.git
     ```
-	2.	Open the project:
+2.	Open the project:
 Navigate to the folder and open index.html in your preferred browser.
-	3.	Enjoy the chaos!
+3.	Enjoy the chaos!
 
 Contribution Guide 🤝
 
 We welcome contributions to make this dimension even more chaotic! If you have ideas for features, animations, or new cat-themed surprises:
-	1.	Fork the repository.
-	2.	Create a feature branch:
+1.	Fork the repository.
+2.	Create a feature branch:
     ```
-git checkout -b your-feature-name
+    git checkout -b your-feature-name
     ```
-	3.	Push your changes and create a pull request.
+3.	Push your changes and create a pull request.
 
-License 📄
+### License 📄
 
 This project is licensed under the MIT License — free to use, modify, and distribute. Just make sure to share the chaos responsibly. 😸
 
-Credits 🙌
-	•	Project by Chinat Yu.
-	•	Emojis and animations inspired by the love of cats.
-	•	Special thanks to all the cat lovers who make the world brighter.
+### Credits 🙌
+- Project by Chinat Yu.
+- Emojis and animations inspired by the love of cats.
+- Special thanks to all the cat lovers who make the world brighter.
 
-Feedback and Support 💬
+### Feedback and Support 💬
 
 If you have questions, suggestions, or want to share your love for cats, feel free to reach out! You can open an issue in the repository or contact us via email.
 
